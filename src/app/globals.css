@@ -28,4 +28,8 @@
   .section-padding {
     @apply py-[120px];
   }
+
+  .section-heading {
+    @apply font-heading leading-tight text-[32px] md:text-[48px] lg:text-[52px] xl:text-[70px];
+  }
 }

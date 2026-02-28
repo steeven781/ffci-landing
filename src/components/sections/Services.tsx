@@ -30,7 +30,7 @@ export default function Services() {
   return (
     <section className="bg-white" aria-label="Nuestros servicios">
       {/* Blue top area */}
-      <div className="bg-[#4A90E2] rounded-t-xl2 pt-20 pb-[320px]">
+      <div className="bg-[#4A90E2] rounded-t-xl2 pt-20 pb-20 md:pb-[320px]">
         <div className="container-ffci">
           <motion.div
             variants={staggerContainer}
@@ -51,7 +51,7 @@ export default function Services() {
             {/* Heading */}
             <motion.h2
               variants={fadeUp}
-              className="font-heading text-[70px] text-white leading-tight"
+              className="section-heading text-white"
             >
               Servicios que transforman vidas
             </motion.h2>
@@ -60,7 +60,7 @@ export default function Services() {
       </div>
 
       {/* Cards — overlap blue section */}
-      <div className="container-ffci -mt-[240px] relative z-10">
+      <div className="container-ffci mt-0 md:-mt-[240px] relative z-10">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -74,11 +74,10 @@ export default function Services() {
               <motion.div
                 key={service.title}
                 variants={fadeUp}
-                className="bg-white flex flex-col p-10 hover:-translate-y-2 transition-transform duration-300"
+                className="bg-white flex flex-col p-10 hover:-translate-y-2 transition-transform duration-300 md:min-h-[554px]"
                 style={{
                   borderRadius: '45px',
                   boxShadow: '0px 3px 30px #0000000D',
-                  minHeight: '554px',
                 }}
               >
                 {/* Icon */}
@@ -92,12 +91,12 @@ export default function Services() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-body font-semibold text-[45px] leading-[1.15] text-navy mt-16 mb-6">
+                <h3 className="font-body font-semibold text-[22px] md:text-[32px] lg:text-[34px] xl:text-[45px] leading-[1.15] text-navy mt-8 md:mt-16 mb-4 md:mb-6">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="font-body text-[30px] leading-[42px] text-[#8D99AE]">
+                <p className="font-body text-[15px] leading-relaxed md:text-[22px] lg:text-[22px] xl:text-[30px] xl:leading-[42px] text-grayblue">
                   {service.description}
                 </p>
               </motion.div>

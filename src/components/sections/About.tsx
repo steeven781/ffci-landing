@@ -56,7 +56,7 @@ export default function About() {
             </span>
 
             {/* Heading */}
-            <h2 className="font-heading text-[70px] leading-[1.1] text-navy mb-8">
+            <h2 className="section-heading leading-[1.1] text-navy mb-8">
               Cada enseñanza se basa
               <br />
               en 2,350 pasajes bíblicos
@@ -71,7 +71,7 @@ export default function About() {
                     className="text-sky shrink-0 mt-1"
                     aria-hidden="true"
                   />
-                  <span className="font-body text-[35px] leading-[42px] text-navy">
+                  <span className="font-body text-[16px] leading-relaxed md:text-[22px] lg:text-[24px] lg:leading-[32px] xl:text-[35px] xl:leading-[42px] text-navy">
                     {item}
                   </span>
                 </li>
@@ -86,25 +86,25 @@ export default function About() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
-          className="mt-20 flex items-center border border-[#4A90E2] rounded-[40px]"
+          className="mt-20 flex flex-wrap items-center border border-[#4A90E2] rounded-[40px]"
         >
           {stats.map((stat, i) => (
             <div key={stat.label} className="flex items-center flex-1">
               <motion.div
                 variants={fadeUp}
-                className="flex-1 flex flex-col items-center justify-center py-10 px-6 text-center"
+                className="flex-1 min-w-[130px] flex flex-col items-center justify-center py-6 lg:py-10 px-4 lg:px-6 text-center"
               >
-                <p className="font-heading text-[72px] text-navy font-normal leading-none">
+                <p className="font-heading text-[36px] md:text-[52px] lg:text-[52px] xl:text-[72px] text-navy font-normal leading-none">
                   {stat.value}
                 </p>
-                <p className="font-body text-[35px] text-[#8D99AE] mt-3">
+                <p className="font-body text-[13px] md:text-[20px] lg:text-[22px] xl:text-[35px] text-grayblue mt-2 lg:mt-3">
                   {stat.label}
                 </p>
               </motion.div>
 
               {/* Partial divider — 60% height, centered */}
               {i < stats.length - 1 && (
-                <div className="w-px h-20 bg-[#4A90E2] shrink-0 opacity-40" />
+                <div className="w-px h-20 bg-[#4A90E2] shrink-0 opacity-40 hidden lg:block" />
               )}
             </div>
           ))}

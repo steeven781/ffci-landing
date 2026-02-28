@@ -57,7 +57,7 @@ export default function History() {
 
           <motion.h2
             variants={fadeUp}
-            className="font-heading text-[70px] text-white leading-tight"
+            className="section-heading text-white"
           >
             Los que dieron inicio a la organización
           </motion.h2>
@@ -83,7 +83,7 @@ export default function History() {
                   aria-expanded={openIndex === i}
                   className="w-full flex items-center justify-between py-7 text-left"
                 >
-                  <span className="font-body font-semibold text-[45px] leading-tight text-white">
+                  <span className="font-body font-semibold text-[20px] md:text-[32px] lg:text-[34px] xl:text-[45px] leading-tight text-white">
                     {item.title}
                   </span>
                   <div className="shrink-0 ml-6 text-white">
@@ -119,12 +119,7 @@ export default function History() {
                           {item.content.map((para, pi) => (
                             <p
                               key={pi}
-                              className="font-body"
-                              style={{
-                                color: '#8D99AE',
-                                fontSize: '30px',
-                                lineHeight: '35px',
-                              }}
+                              className="font-body text-grayblue text-[15px] leading-snug md:text-[20px] lg:text-[20px] xl:text-[30px] xl:leading-[35px]"
                             >
                               {para}
                             </p>
@@ -139,7 +134,7 @@ export default function History() {
           </motion.div>
 
           {/* Right: Image */}
-          <div className="relative min-h-[500px] rounded-card overflow-hidden">
+          <div className="relative min-h-[300px] md:min-h-[500px] rounded-card overflow-hidden">
             <Image
               src="/assets/history-1.png"
               alt="Historia de FFCI Guatemala"

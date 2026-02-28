@@ -16,7 +16,7 @@ const trustLogos = [
 export default function Hero() {
   return (
     <section
-      className="relative bg-[#051D3B] mt-[93px] mx-auto w-[calc(100%-30px)] max-w-[1865px] rounded-xl2 overflow-hidden min-h-[70vh] flex flex-col justify-between pt-[250px] pb-16"
+      className="relative bg-[#051D3B] mt-[93px] mx-auto w-[calc(100%-30px)] max-w-[1865px] rounded-xl2 overflow-hidden min-h-[70vh] flex flex-col justify-between pt-[160px] md:pt-[220px] lg:pt-[250px] pb-16"
       aria-label="Sección principal"
     >
       {/* Watermark background icons */}
@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Subtext — 2 líneas, blanco puro */}
           <motion.p
             variants={fadeUp}
-            className="mt-8 pt-[60px] font-body text-[35px] leading-[41px] text-white text-center w-full max-w-[1130px]"
+            className="mt-8 pt-[30px] md:pt-[60px] font-body text-[18px] leading-relaxed md:text-[26px] lg:text-[35px] lg:leading-[41px] text-white text-center w-full max-w-[1130px]"
           >
             Equipamos a líderes, ejecutivos y empresarios para administrar
             <br />

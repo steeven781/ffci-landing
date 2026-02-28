@@ -42,7 +42,7 @@ export default function Footer() {
 
             <Link
               href="/agenda"
-              className="inline-flex self-start items-center justify-center h-[64px] px-10 bg-[#003366] text-white font-body font-extrabold text-[20px] tracking-widest uppercase hover:brightness-110 transition-all duration-200"
+              className="inline-flex self-start items-center justify-center h-[64px] px-6 lg:px-6 xl:px-10 bg-[#003366] text-white font-body font-extrabold text-[16px] lg:text-[16px] xl:text-[20px] tracking-wide lg:tracking-wide xl:tracking-widest uppercase hover:brightness-110 transition-all duration-200"
               style={{ borderRadius: '38px' }}
             >
               Agenda una cita

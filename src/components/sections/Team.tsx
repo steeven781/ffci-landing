@@ -37,16 +37,10 @@ function MemberCard({ member }: { member: (typeof teamMembers)[0] }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
-      <p
-        className="font-body pt-[16px]"
-        style={{ color: '#003366', fontSize: '25px', lineHeight: '30px' }}
-      >
+      <p className="font-body pt-[16px] text-[#003366] text-[13px] leading-snug md:text-[18px] lg:text-[18px] xl:text-[25px] xl:leading-[30px]">
         {member.role}
       </p>
-      <p
-        className="font-body font-extrabold pt-[20px]"
-        style={{ color: '#003366', fontSize: '35px', lineHeight: '42px' }}
-      >
+      <p className="font-body font-extrabold pt-[20px] text-[#003366] text-[16px] leading-snug md:text-[22px] lg:text-[24px] lg:leading-[30px] xl:text-[35px] xl:leading-[42px]">
         {member.name}
       </p>
     </div>
@@ -70,24 +64,21 @@ export default function Team() {
         >
           <motion.span
             variants={fadeUp}
-            className="inline-flex items-center px-12 py-3 bg-[#F0E6D3] font-body text-[20px] font-semibold text-[#CBAC58] tracking-[0.12em] uppercase mb-8"
-            style={{ borderRadius: '20px' }}
+            className="inline-flex items-center px-12 py-3 bg-[#F0E6D3] font-body text-[20px] font-semibold text-gold tracking-[0.12em] uppercase mb-8 rounded-[20px]"
           >
             Nuestro equipo
           </motion.span>
 
           <motion.h2
             variants={fadeUp}
-            className="font-heading text-[70px] leading-tight mb-8"
-            style={{ color: '#08284F' }}
+            className="section-heading text-navy mb-8"
           >
             Conoce al Equipo Directivo y Formador
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
-            className="font-body w-full text-center"
-            style={{ color: '#8D99AE', fontSize: '30px', lineHeight: '38px' }}
+            className="font-body w-full text-center text-grayblue text-[15px] leading-relaxed md:text-[22px] lg:text-[22px] xl:text-[30px] xl:leading-[38px]"
           >
             Conformado por profesionales y líderes comprometidos con formar
             carácter, fortalecer la
@@ -130,15 +121,3 @@ export default function Team() {
     </section>
   );
 }
-
-/*
-Ahora podrias analizar todos los componentes por favor profundamente y SIN MODIFICAR NADA DE LA LOGICA Y DE COMO ESTAN ARMADOS
-
-Podrias ver si algunas cosas se pueden pasar para el @tailwind.config.ts
-
-O para el @src/app/globals.css
-
-Por favor
-
-Y finalmente verificar que todos los componentes sean responsive y adaptables a una vista de iPad o Mobile por favor
-*/

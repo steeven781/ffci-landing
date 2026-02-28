@@ -11,8 +11,12 @@ const config: Config = {
       colors: {
         navy: "#08284F",
         navy2: "#0D3B66",
+        navy3: "#003366",
+        hero: "#051D3B",
         sky: "#5087C7",
+        accent: "#4A90E2",
         gold: "#CBAC58",
+        "gold-tint": "#F0E6D3",
         off: "#F6F7F3",
         grayblue: "#8D99AE",
       },
@@ -31,6 +35,9 @@ const config: Config = {
       borderRadius: {
         "xl2": "58px",
         "card": "24px",
+        "card2": "45px",
+        "badge": "20px",
+        "btn": "38px",
       },
       maxWidth: {
         container: "1706px",
@@ -38,6 +45,7 @@ const config: Config = {
       boxShadow: {
         soft: "0 4px 32px rgba(8, 40, 79, 0.08)",
         card: "0 8px 40px rgba(8, 40, 79, 0.12)",
+        card2: "0px 3px 30px rgba(0, 0, 0, 0.05)",
       },
     },
   },
