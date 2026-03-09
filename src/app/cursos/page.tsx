@@ -4,7 +4,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CoursesFilter from '@/components/sections/CoursesFilter';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Cursos y Capacitación – FFCI Guatemala',
@@ -172,30 +171,6 @@ export default function CursosPage() {
         <div id="cursos">
           <CoursesFilter courses={courses} />
         </div>
-
-        {/* In-company CTA */}
-        <section className="bg-off section-padding rounded-t-xl2">
-          <div className="container-ffci">
-            <div className="bg-navy rounded-card p-12 lg:p-20 flex flex-col lg:flex-row items-center gap-10 justify-between">
-              <div>
-                <h2 className="font-heading text-[clamp(32px,3.5vw,60px)] text-white leading-tight max-w-xl">
-                  ¿Necesitas formación para todo tu equipo?
-                </h2>
-                <p className="mt-4 font-body text-body-lg text-grayblue max-w-lg">
-                  Diseñamos programas in-company completamente personalizados
-                  para tu cultura, industria y objetivos específicos.
-                </p>
-              </div>
-              <Link
-                href="/agenda"
-                className="inline-flex items-center gap-2 h-16 px-10 bg-gold text-navy font-body font-bold text-body-md rounded-full hover:bg-white transition-colors duration-200 shrink-0 whitespace-nowrap"
-              >
-                Solicitar propuesta
-                <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
