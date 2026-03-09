@@ -9,6 +9,7 @@ import { staggerContainer, fadeUp } from '@/lib/motion';
 const milestones = [
   {
     title: 'El origen de la visión',
+    image: '/assets/history-1.png',
     content: [
       'En 2010 inició un curso intensivo de diez semanas en educación financiera personal dirigido a empresarios que buscaban mejorar el control de sus finanzas. A través de principios bíblicos que se brindaron herramientas para ordenar sus recursos con propósito.',
       'Con el tiempo, se evidenció que la capacitación por sí sola no era suficiente para enfrentar problemas de endeudamiento y mala gestión. Así nació Fraternidad de Formadores con Carácter Integral (FFCI), con el propósito de acompañar y fortalecer a empresarios, líderes y emprendedores para que administren sabiamente sus finanzas y vivan su llamado con coherencia.',
@@ -17,14 +18,30 @@ const milestones = [
   },
   {
     title: 'Visión y misión',
-    content: [
-      'Ser el referente de formación con carácter integral para líderes y empresarios en Latinoamérica, guiados por principios bíblicos y valores de excelencia.',
+    image: '/assets/mision-vision.png',
+    sections: [
+      {
+        label: 'Misión',
+        text: 'Guiar a propietarios de negocios, líderes y ejecutivos guatemaltecos en la aplicación de principios bíblicos que transformen su vida personal y empresarial.',
+      },
+      {
+        label: 'Visión',
+        text: 'Ser influenciadores de líderes profesionales y empresarios guatemaltecos, sembrando principios bíblicos que trasciendan a la siguiente generación a nivel mundial.',
+      },
     ],
   },
   {
     title: 'Fundadores',
-    content: [
-      'FFCI fue fundada por un equipo de líderes comprometidos con la transformación financiera y espiritual de empresarios y emprendedores en Guatemala.',
+    image: '/assets/founders.png',
+    sections: [
+      {
+        label: '',
+        text: 'Danilo de León y Melvy de De León son fundadores de Fraternidad de Formadores con Carácter Integral (FFCI), organización establecida en 2012 en la ciudad de Guatemala. Ambos cuentan con más de 20 años de experiencia como coaches en finanzas personales y liderazgo, son conferencistas internacionales y catedráticos universitarios.',
+      },
+      {
+        label: '',
+        text: 'Están certificados por Fraternidad de Compañías de Cristo Internacional (FCCI), Conceptos Financieros Crown, Expertos Globales – USA, Cultura Financiera y 30–60–100 Ministries INC. Son coautores del libro Finanzas en Acción y han desarrollado una labor constante en formación, asesoría y acompañamiento a líderes, empresarios y emprendedores.',
+      },
     ],
   },
 ];
@@ -55,10 +72,7 @@ export default function History() {
             Nuestra trayectoria
           </motion.span>
 
-          <motion.h2
-            variants={fadeUp}
-            className="section-heading text-white"
-          >
+          <motion.h2 variants={fadeUp} className="section-heading text-white">
             Los que dieron inicio a la organización
           </motion.h2>
         </motion.div>
@@ -102,7 +116,8 @@ export default function History() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.35, ease: 'easeInOut' }}
-                      className="overflow-hidden"
+                      className="overflow-hidden -ml-14"
+                      style={{ width: 'calc(100% + 56px)' }}
                     >
                       <div className="relative mb-8">
                         {/* Blue overlay */}
@@ -115,15 +130,28 @@ export default function History() {
                             opacity: 0.5,
                           }}
                         />
-                        <div className="relative px-8 py-8 flex flex-col gap-5">
-                          {item.content.map((para, pi) => (
-                            <p
-                              key={pi}
-                              className="font-body text-grayblue text-[15px] leading-snug md:text-[20px] lg:text-[20px] xl:text-[30px] xl:leading-[35px]"
-                            >
-                              {para}
-                            </p>
-                          ))}
+                        <div className="relative pl-14 pr-8 py-10 flex flex-col gap-8">
+                          {item.sections
+                            ? item.sections.map((s, pi) => (
+                                <div key={pi}>
+                                  {s.label && (
+                                    <p className="font-body font-semibold text-white text-[15px] md:text-[20px] xl:text-[30px] mb-3">
+                                      {s.label}
+                                    </p>
+                                  )}
+                                  <p className="font-body text-grayblue text-[15px] leading-snug md:text-[20px] lg:text-[20px] xl:text-[30px] xl:leading-[35px]">
+                                    {s.text}
+                                  </p>
+                                </div>
+                              ))
+                            : item.content.map((para, pi) => (
+                                <p
+                                  key={pi}
+                                  className="font-body text-grayblue text-[15px] leading-snug md:text-[20px] lg:text-[20px] xl:text-[30px] xl:leading-[35px]"
+                                >
+                                  {para}
+                                </p>
+                              ))}
                         </div>
                       </div>
                     </motion.div>
@@ -136,7 +164,11 @@ export default function History() {
           {/* Right: Image */}
           <div className="relative min-h-[300px] md:min-h-[500px] rounded-card overflow-hidden">
             <Image
-              src="/assets/history-1.png"
+              src={
+                openIndex >= 0
+                  ? milestones[openIndex].image
+                  : milestones[0].image
+              }
               alt="Historia de FFCI Guatemala"
               fill
               className="object-cover object-center"

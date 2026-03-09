@@ -2,23 +2,23 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { HandCoins, BadgeDollarSign, Trophy } from 'lucide-react';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 
 const services = [
   {
-    icon: HandCoins,
+    imageSrc: '/assets/manos-usd@2x.png',
     title: 'Libertad Financiera',
     description: 'Seminario-taller de admin. financiera a la luz de la biblia',
   },
   {
-    icon: BadgeDollarSign,
+    imageSrc: '/assets/finanzas-personales@2x.png',
     title: 'Asesoría Financiera',
     description: 'Programa y resolución de deudas',
   },
   {
-    icon: Trophy,
+    imageSrc: '/assets/lider-de-inspiracion-de-la-antorcha@2x.png',
     title: 'Liderazgo Auténtico',
     description: '10 principios que optimizan tu verdadero potencial',
   },
@@ -49,10 +49,7 @@ export default function Services() {
             </motion.span>
 
             {/* Heading */}
-            <motion.h2
-              variants={fadeUp}
-              className="section-heading text-white"
-            >
+            <motion.h2 variants={fadeUp} className="section-heading text-white">
               Servicios que transforman vidas
             </motion.h2>
           </motion.div>
@@ -68,40 +65,38 @@ export default function Services() {
           viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                variants={fadeUp}
-                className="bg-white flex flex-col p-10 hover:-translate-y-2 transition-transform duration-300 md:min-h-[554px]"
-                style={{
-                  borderRadius: '45px',
-                  boxShadow: '0px 3px 30px #0000000D',
-                }}
-              >
-                {/* Icon */}
-                <div className="mb-auto">
-                  <Icon
-                    size={64}
-                    className="text-sky"
-                    strokeWidth={1.2}
-                    aria-hidden="true"
-                  />
-                </div>
+          {services.map((service) => (
+            <motion.div
+              key={service.title}
+              variants={fadeUp}
+              className="bg-white flex flex-col p-10 hover:-translate-y-2 transition-transform duration-300"
+              style={{
+                borderRadius: '45px',
+                boxShadow: '0px 3px 30px #0000000D',
+              }}
+            >
+              {/* Icon */}
+              <div>
+                <Image
+                  src={service.imageSrc}
+                  alt={service.title}
+                  width={96}
+                  height={96}
+                  aria-hidden="true"
+                />
+              </div>
 
-                {/* Title */}
-                <h3 className="font-body font-semibold text-[22px] md:text-[32px] lg:text-[34px] xl:text-[45px] leading-[1.15] text-navy mt-8 md:mt-16 mb-4 md:mb-6">
+              {/* Title + Description */}
+              <div className="mt-20">
+                <h3 className="font-body font-semibold text-[22px] md:text-[32px] lg:text-[34px] xl:text-[45px] leading-[1.15] text-navy mb-4">
                   {service.title}
                 </h3>
-
-                {/* Description */}
                 <p className="font-body text-[15px] leading-relaxed md:text-[22px] lg:text-[22px] xl:text-[30px] xl:leading-[42px] text-grayblue">
                   {service.description}
                 </p>
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Carousel dots */}

@@ -1,16 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Coins, TrendingUp, Landmark, BarChart2, Wallet } from 'lucide-react';
 import { fadeUp, staggerContainer } from '@/lib/motion';
 
 const trustLogos = [
-  'Empresa A',
-  'Empresa B',
-  'Empresa C',
-  'Empresa D',
-  'Empresa E',
+  { name: 'Cámara de Comercio de Guatemala', src: '/assets/camara-comercio-logo.png', width: 310 },
+  { name: 'USAC', src: '/assets/usac-logo.png', width: 240 },
+  { name: 'Guateplast', src: '/assets/guateplast-logo.png', width: 220 },
+  { name: 'Combexim', src: '/assets/combexim-logo.png', width: 320 },
+  { name: 'Autollantas', src: '/assets/autollantas-logo.png', width: 260 },
+  { name: 'Unisuper', src: '/assets/unisuper-logo.png', width: 180 },
 ];
 
 export default function Hero() {
@@ -19,24 +20,15 @@ export default function Hero() {
       className="relative bg-[#051D3B] mt-[93px] mx-auto w-[calc(100%-30px)] max-w-[1865px] rounded-xl2 overflow-hidden min-h-[70vh] flex flex-col justify-between pt-[160px] md:pt-[220px] lg:pt-[250px] pb-16"
       aria-label="Sección principal"
     >
-      {/* Watermark background icons */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <Landmark
-          size={340}
-          strokeWidth={0.6}
-          className="absolute -top-10 -right-16 text-white opacity-[0.05]"
-        />
-        <BarChart2
-          size={260}
-          strokeWidth={0.6}
-          className="absolute bottom-20 -left-10 text-white opacity-[0.05]"
-        />
-        <Wallet
-          size={200}
-          strokeWidth={0.6}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-[0.03]"
-        />
-      </div>
+      {/* Background image */}
+      <Image
+        src="/assets/ffci-bg-hero.png"
+        alt=""
+        fill
+        className="object-cover object-center pointer-events-none"
+        aria-hidden="true"
+        priority
+      />
 
       <div className="container-ffci relative z-10">
         <motion.div
@@ -52,19 +44,23 @@ export default function Hero() {
           >
             <span className="block">
               Donde hay propósito,{' '}
-              <Coins
-                className="inline-block text-gold align-middle mb-2"
-                size="0.8em"
-                strokeWidth={1.5}
+              <Image
+                src="/assets/Group 8.png"
+                alt=""
+                width={72}
+                height={72}
+                className="inline-block align-middle mb-2"
                 aria-hidden="true"
               />
             </span>
             <span className="block">
               tus finanzas tienen{' '}
-              <TrendingUp
-                className="inline-block text-gold align-middle mb-2"
-                size="0.75em"
-                strokeWidth={1.5}
+              <Image
+                src="/assets/Group 13.png"
+                alt=""
+                width={72}
+                height={72}
+                className="inline-block align-middle mb-2"
                 aria-hidden="true"
               />{' '}
               dirección
@@ -94,19 +90,18 @@ export default function Hero() {
 
           {/* Trust logos */}
           <motion.div variants={fadeUp} className="mt-28 w-full pt-[30px]">
-            <p className="font-body text-[15px] text-white mb-8 tracking-wide">
+            <p className="font-body font-normal text-[22px] text-white mb-8 tracking-wide">
               Con la confianza de líderes de la industria
             </p>
-            <div className="flex flex-wrap justify-center gap-6 items-center pt-[18px]">
-              {trustLogos.map((name) => (
-                <div
-                  key={name}
-                  className="h-12 px-6 rounded-lg border border-white/15 flex items-center justify-center"
-                  aria-label={`Logo de ${name}`}
-                >
-                  <span className="font-body text-[15px] font-semibold text-white/35 tracking-wide">
-                    {name}
-                  </span>
+            <div className="flex flex-wrap justify-center gap-6 items-center pt-[18px] -translate-x-[80px]">
+              {trustLogos.map((logo) => (
+                <div key={logo.name} className="relative h-20 flex items-center justify-center" style={{ width: logo.width }}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               ))}
             </div>
