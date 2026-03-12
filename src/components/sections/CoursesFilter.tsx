@@ -10,6 +10,7 @@ const categories = [
   'ASESORÍA FINANCIERA',
   'LIDERAZGO',
   'EMPRESARIOS',
+  'TERAPIA',
   'MUJERES',
   'JUVENTUD',
 ];
@@ -19,6 +20,7 @@ type Course = {
   title: string;
   description: string;
   imagePath: string;
+  modalIcon?: string;
   badge: string | null;
   longDescription?: string;
   contentItems?: string[];
@@ -170,12 +172,12 @@ export default function CoursesFilter({ courses }: { courses: Course[] }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               {/* Left: description + icon */}
               <div className="flex flex-col">
-                <p className="font-body text-[22px] text-[#08284F] leading-tight flex-1">
+                <p className="font-body text-[22px] text-[#08284F] leading-tight flex-1 whitespace-pre-line">
                   {selectedCourse.longDescription || selectedCourse.description}
                 </p>
                 <div className="mt-10 w-[96px] h-[96px] relative">
                   <Image
-                    src="/assets/Group 8.png"
+                    src={selectedCourse.modalIcon ?? selectedCourse.imagePath}
                     alt=""
                     fill
                     className="object-contain object-left"
