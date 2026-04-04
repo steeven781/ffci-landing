@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import { cases } from '../data';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { cases } from "../data";
 
 type Props = { params: { slug: string } };
 
@@ -48,19 +48,19 @@ export default function CasoDetailPage({ params }: Props) {
               <div className="flex flex-col">
                 <span
                   className="inline-block self-start font-body font-semibold uppercase tracking-wide text-[#4A90E2] bg-[#4A90E2]/20 px-4 py-1.5 rounded-[4px] mb-6"
-                  style={{ fontSize: '15px' }}
+                  style={{ fontSize: "15px" }}
                 >
                   Caso de estudio
                 </span>
 
                 <h1
                   className="font-heading text-navy leading-[1.05] mb-6"
-                  style={{ fontSize: 'clamp(56px, 6vw, 90px)' }}
+                  style={{ fontSize: "clamp(56px, 6vw, 90px)" }}
                 >
                   {c.company}
                 </h1>
 
-                <p className="font-body text-[18px] text-navy/60 leading-relaxed mb-10">
+                <p className="font-body text-[18px] text-[#08284F] leading-relaxed mb-10">
                   {c.description}
                 </p>
 
@@ -87,12 +87,22 @@ export default function CasoDetailPage({ params }: Props) {
               </div>
 
               {/* Right: image */}
-              <div className="relative w-full aspect-[4/3] rounded-[35px] overflow-hidden">
-                <Image
-                  src={c.image}
+              <div
+                style={{
+                  borderRadius: "45px",
+                  overflow: "hidden",
+                  transform: "translateZ(0)",
+                }}
+              >
+                <img
+                  src={c.imagenDetail}
                   alt={c.company}
-                  fill
-                  className="object-cover"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    aspectRatio: "4/3",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
             </div>
@@ -110,7 +120,7 @@ export default function CasoDetailPage({ params }: Props) {
             <div className="max-w-[750px] mx-auto">
               <h2
                 className="font-heading text-navy mb-6"
-                style={{ fontSize: 'clamp(36px, 4vw, 52px)' }}
+                style={{ fontSize: "clamp(36px, 4vw, 52px)" }}
               >
                 El objetivo
               </h2>
@@ -152,7 +162,7 @@ export default function CasoDetailPage({ params }: Props) {
                       height={20}
                       className="shrink-0 mt-0.5"
                     />
-                    <span className="font-body text-[16px] text-navy/70">
+                    <span className="font-body text-[16px] text-[#08284F]">
                       {r}
                     </span>
                   </li>
@@ -172,7 +182,7 @@ export default function CasoDetailPage({ params }: Props) {
           <div className="container-ffci flex flex-col items-center gap-8">
             <h2
               className="font-body font-semibold text-navy leading-tight"
-              style={{ fontSize: 'clamp(20px, 2vw, 28px)' }}
+              style={{ fontSize: "clamp(20px, 2vw, 28px)" }}
             >
               ¿Listo para construir tu Caso de éxito?
             </h2>

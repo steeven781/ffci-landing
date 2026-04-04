@@ -1,17 +1,22 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer } from '@/lib/motion';
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/motion";
+import Marquee from "react-fast-marquee";
 
 const trustLogos = [
-  { name: 'Cámara de Comercio de Guatemala', src: '/assets/camara-comercio-logo.png', width: 310 },
-  { name: 'USAC', src: '/assets/usac-logo.png', width: 240 },
-  { name: 'Guateplast', src: '/assets/guateplast-logo.png', width: 220 },
-  { name: 'Combexim', src: '/assets/combexim-logo.png', width: 320 },
-  { name: 'Autollantas', src: '/assets/autollantas-logo.png', width: 260 },
-  { name: 'Unisuper', src: '/assets/unisuper-logo.png', width: 180 },
+  {
+    name: "Cámara de Comercio de Guatemala",
+    src: "/assets/camara-comercio-logo.png",
+    width: 320,
+  },
+  { name: "USAC", src: "/assets/usac-logo.png", width: 260 },
+  { name: "Guateplast", src: "/assets/guateplast-logo.png", width: 240 },
+  { name: "Combexim", src: "/assets/combexim-logo.png", width: 340 },
+  { name: "Autollantas", src: "/assets/autollantas-logo.png", width: 280 },
+  { name: "Unisuper", src: "/assets/unisuper-logo.png", width: 160 },
 ];
 
 export default function Hero() {
@@ -43,7 +48,7 @@ export default function Hero() {
             className="font-heading text-[clamp(42px,6.5vw,90px)] text-white leading-[1.1] "
           >
             <span className="block">
-              Donde hay propósito,{' '}
+              Donde hay propósito,{" "}
               <Image
                 src="/assets/Group 8.png"
                 alt=""
@@ -54,7 +59,7 @@ export default function Hero() {
               />
             </span>
             <span className="block">
-              tus finanzas tienen{' '}
+              tus finanzas tienen{" "}
               <Image
                 src="/assets/Group 13.png"
                 alt=""
@@ -62,7 +67,7 @@ export default function Hero() {
                 height={72}
                 className="inline-block align-middle mb-2"
                 aria-hidden="true"
-              />{' '}
+              />{" "}
               dirección
             </span>
           </motion.h1>
@@ -93,9 +98,13 @@ export default function Hero() {
             <p className="font-body font-normal text-[22px] text-white mb-8 tracking-wide">
               Con la confianza de líderes de la industria
             </p>
-            <div className="flex flex-wrap justify-center gap-6 items-center pt-[18px] -translate-x-[80px]">
-              {trustLogos.map((logo) => (
-                <div key={logo.name} className="relative h-20 flex items-center justify-center" style={{ width: logo.width }}>
+            <Marquee speed={30} gradient={false} className="pt-[18px]">
+              {trustLogos.map((logo, index) => (
+                <div
+                  key={index}
+                  className="relative h-20 flex items-center justify-center flex-shrink-0 mx-4"
+                  style={{ width: logo.width }}
+                >
                   <Image
                     src={logo.src}
                     alt={logo.name}
@@ -104,7 +113,7 @@ export default function Hero() {
                   />
                 </div>
               ))}
-            </div>
+            </Marquee>
           </motion.div>
         </motion.div>
       </div>

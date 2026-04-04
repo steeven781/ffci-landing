@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FFCI Guatemala – Sitio en actualización</title>
+    <meta
+      name="description"
+      content="Estamos trabajando para ofrecerte una mejor experiencia. Volvemos pronto."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #08284f;
+        --navy2: #0d3b66;
+        --hero: #051d3b;
+        --gold: #cbac58;
+        --gold-tint: #f0e6d3;
+        --sky: #5087c7;
+        --off: #f6f7f3;
+        --grayblue: #8d99ae;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--hero);
+        background-image:
+          radial-gradient(
+            ellipse 80% 60% at 50% -10%,
+            rgba(80, 135, 199, 0.18) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 80% 110%,
+            rgba(203, 172, 88, 0.1) 0%,
+            transparent 60%
+          );
+        font-family: 'Raleway', system-ui, sans-serif;
+        color: var(--off);
+        padding: 40px 20px;
+        overflow-x: hidden;
+      }
+
+      /* ─── Animated background dots ─── */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        );
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .card {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        width: 100%;
+        background: rgba(13, 59, 102, 0.45);
+        border: 1px solid rgba(203, 172, 88, 0.2);
+        border-radius: 45px;
+        padding: 64px 56px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 8px 64px rgba(5, 29, 59, 0.5);
+        text-align: center;
+      }
+
+      /* ─── Logo / Badge ─── */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(203, 172, 88, 0.12);
+        border: 1px solid rgba(203, 172, 88, 0.35);
+        border-radius: 20px;
+        padding: 6px 18px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 36px;
+      }
+      .badge::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gold);
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.8);
+        }
+      }
+
+      /* ─── Headline ─── */
+      .headline {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(36px, 6vw, 62px);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .headline em {
+        font-style: italic;
+        color: var(--gold);
+      }
+
+      .subheadline {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(18px, 2.5vw, 26px);
+        font-weight: 400;
+        font-style: italic;
+        color: var(--grayblue);
+        margin-bottom: 32px;
+      }
+
+      /* ─── Divider ─── */
+      .divider {
+        width: 64px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 0 auto 32px;
+      }
+
+      /* ─── Body copy ─── */
+      .body-text {
+        font-size: clamp(15px, 2vw, 18px);
+        font-weight: 400;
+        line-height: 1.75;
+        color: rgba(246, 247, 243, 0.78);
+        max-width: 560px;
+        margin: 0 auto 40px;
+      }
+      .body-text strong {
+        color: var(--gold-tint);
+        font-weight: 600;
+      }
+
+      /* ─── Stats row ─── */
+      .stats {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 44px;
+        flex-wrap: wrap;
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .stat-number {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 700;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grayblue);
+      }
+      .stat-sep {
+        width: 1px;
+        height: 48px;
+        background: rgba(141, 153, 174, 0.25);
+        align-self: center;
+      }
+
+      /* ─── CTA ─── */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--gold) 0%, #b89640 100%);
+        color: var(--navy);
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 38px;
+        padding: 16px 36px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: 0 4px 24px rgba(203, 172, 88, 0.3);
+      }
+      .cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(203, 172, 88, 0.45);
+      }
+      .cta svg {
+        flex-shrink: 0;
+      }
+
+      /* ─── Footer note ─── */
+      .footer-note {
+        margin-top: 48px;
+        font-size: 13px;
+        color: rgba(141, 153, 174, 0.7);
+        letter-spacing: 0.03em;
+      }
+      .footer-note a {
+        color: var(--grayblue);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(141, 153, 174, 0.35);
+        transition: color 0.2s;
+      }
+      .footer-note a:hover {
+        color: var(--gold-tint);
+      }
+
+      /* ─── Progress bar ─── */
+      .progress-wrap {
+        margin-bottom: 44px;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--grayblue);
+        margin-bottom: 10px;
+      }
+      .progress-track {
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(141, 153, 174, 0.15);
+        overflow: hidden;
+      }
+      .progress-bar {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--sky), var(--gold));
+        width: 0%;
+        animation: fill-bar 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+      }
+      @keyframes fill-bar {
+        to {
+          width: 78%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .card {
+          padding: 48px 28px;
+          border-radius: 32px;
+        }
+        .stats {
+          gap: 24px;
+        }
+        .stat-sep {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="badge">Actualización en curso</div>
+
+      <h1 class="headline">
+        Algo <em>extraordinario</em><br />está por llegar
+      </h1>
+      <p class="subheadline">Estamos renovando nuestra presencia digital</p>
+
+      <div class="divider"></div>
+
+      <p class="body-text">
+        Llevamos más de <strong>15 años</strong> transformando organizaciones en
+        Guatemala y ahora estamos construyendo la experiencia digital que tu
+        empresa merece. Nuestro nuevo sitio llegará con toda la información
+        sobre nuestros servicios de <strong>consultoría estratégica</strong>,
+        <strong>capacitación profesional</strong> y
+        <strong>gestión de proyectos</strong>.
+      </p>
+
+      <!-- Progress -->
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>Progreso del sitio</span>
+          <span>78%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-number">20+</span>
+          <span class="stat-label">Años de experiencia</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-number">25</span>
+          <span class="stat-label">Casos de éxito</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-number">80</span>
+          <span class="stat-label">Dudas resueltas</span>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a class="cta" href="https://asesorias.ffci-guatemala.org/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          Asesorías
+        </a>
+        <a class="cta" href="https://campus.ffci-guatemala.org/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+          Campus
+        </a>
+        <a class="cta" href="https://wa.me/50259749230" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          Contáctanos
+        </a>
+      </div>
+
+      <p class="footer-note">&copy; 2025 FFCI Guatemala</p>
+    </div>
+  </body>
+</html>

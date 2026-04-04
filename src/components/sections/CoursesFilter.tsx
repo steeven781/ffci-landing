@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { ArrowRight, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { ArrowRight, X } from "lucide-react";
 
 const categories = [
-  'TODOS',
-  'EDUCACIÓN FINANCIERA',
-  'ASESORÍA FINANCIERA',
-  'LIDERAZGO',
-  'EMPRESARIOS',
-  'TERAPIA',
-  'MUJERES',
-  'JUVENTUD',
+  "TODOS",
+  "EDUCACIÓN FINANCIERA",
+  "ASESORÍA FINANCIERA",
+  "LIDERAZGO",
+  "EMPRESARIOS",
+  "TERAPIA",
+  "MUJERES",
+  "JUVENTUD",
 ];
 
 type Course = {
@@ -22,37 +22,40 @@ type Course = {
   imagePath: string;
   modalIcon?: string;
   badge: string | null;
+  status: "active" | "deactive";
   longDescription?: string;
   contentItems?: string[];
 };
 
 const modalCardStyle = {
-  background: '#F6F7F3',
-  boxShadow: '0px 3px 30px #00000029',
-  borderRadius: '65px',
+  background: "#F6F7F3",
+  boxShadow: "0px 3px 30px #00000029",
+  borderRadius: "65px",
 };
 
 export default function CoursesFilter({ courses }: { courses: Course[] }) {
-  const [active, setActive] = useState('TODOS');
+  const [active, setActive] = useState("TODOS");
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   useEffect(() => {
     if (!selectedCourse) return;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedCourse(null);
+      if (e.key === "Escape") setSelectedCourse(null);
     };
-    window.addEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [selectedCourse]);
 
+  const activeCourses = courses.filter((c) => c.status === "active");
+
   const filtered =
-    active === 'TODOS'
-      ? courses
-      : courses.filter((c) => c.category.toUpperCase() === active);
+    active === "TODOS"
+      ? activeCourses
+      : activeCourses.filter((c) => c.category.toUpperCase() === active);
 
   return (
     <>
@@ -66,8 +69,8 @@ export default function CoursesFilter({ courses }: { courses: Course[] }) {
                 onClick={() => setActive(cat)}
                 className={`h-[52px] px-7 rounded-full font-body font-extrabold text-[21px] uppercase transition-colors duration-200 ${
                   active === cat
-                    ? 'bg-[#4A90E2] text-white'
-                    : 'bg-[#8D99AE] text-white hover:bg-[#4A90E2]/70'
+                    ? "bg-[#4A90E2] text-white"
+                    : "bg-[#8D99AE] text-white hover:bg-[#4A90E2]/70"
                 }`}
               >
                 {cat}
@@ -114,7 +117,7 @@ export default function CoursesFilter({ courses }: { courses: Course[] }) {
                 <div className="flex items-center justify-between">
                   <span
                     className="font-body font-semibold text-[15px] text-[#CBAC58] uppercase tracking-wider px-4 py-2 rounded-lg"
-                    style={{ backgroundColor: 'rgba(203,172,88,0.12)' }}
+                    style={{ backgroundColor: "rgba(203,172,88,0.12)" }}
                   >
                     {course.category}
                   </span>
@@ -158,7 +161,7 @@ export default function CoursesFilter({ courses }: { courses: Course[] }) {
             {/* Category badge */}
             <span
               className="inline-block font-body font-semibold text-[13px] text-[#CBAC58] uppercase tracking-wider px-4 py-2 rounded-lg"
-              style={{ backgroundColor: 'rgba(203,172,88,0.12)' }}
+              style={{ backgroundColor: "rgba(203,172,88,0.12)" }}
             >
               {selectedCourse.category}
             </span>

@@ -1,18 +1,20 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import Image from 'next/image';
-import CursosGrid from '@/components/sections/CursosGrid';
-import { courses } from './data';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import Image from "next/image";
+import CursosGrid from "@/components/sections/CursosGrid";
+import { courses } from "./data";
 
 export const metadata: Metadata = {
-  title: 'Cursos y Capacitación – FFCI Guatemala',
+  title: "Cursos y Capacitación – FFCI Guatemala",
   description:
-    'Programas de formación ejecutiva y técnica para profesionales y empresas en Guatemala. Liderazgo, gestión de proyectos, finanzas y más.',
+    "Programas de formación ejecutiva y técnica para profesionales y empresas en Guatemala. Liderazgo, gestión de proyectos, finanzas y más.",
 };
 
 export default function CursosPage() {
+  const activeCourses = courses.filter((course) => course.status === "active");
+
   return (
     <>
       <Header />
@@ -56,7 +58,7 @@ export default function CursosPage() {
         {/* Courses grid — 4 per row */}
         <section id="cursos" className="section-padding bg-white">
           <div className="container-ffci">
-            <CursosGrid courses={courses} />
+            <CursosGrid courses={activeCourses} />
           </div>
         </section>
       </main>

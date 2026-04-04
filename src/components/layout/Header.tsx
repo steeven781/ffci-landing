@@ -1,15 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/casos-exito', label: 'Casos de éxito' },
-  { href: '/cursos', label: 'Cursos' },
+  { href: "/", label: "Inicio" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/casos-exito", label: "Casos de éxito" },
+  { href: "/cursos", label: "Cursos" },
 ];
 
 export default function Header() {
@@ -62,7 +63,7 @@ export default function Header() {
         <button
           className="md:hidden p-2 text-navy"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X size={26} /> : <Menu size={26} />}
@@ -76,7 +77,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             className="absolute top-full left-[25px] right-[25px] mt-3 bg-white rounded-card shadow-card p-6 flex flex-col gap-5"
           >
             {navLinks.map((link) => (

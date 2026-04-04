@@ -1,19 +1,16 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import { ArrowRight } from 'lucide-react';
-import { cases } from './data';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { ArrowRight } from "lucide-react";
+import { cases } from "./data";
 
 export const metadata: Metadata = {
-  title: 'Casos de Éxito – FFCI Guatemala',
+  title: "Casos de Éxito – FFCI Guatemala",
   description:
-    'Conoce las historias de líderes y empresarios que han transformado su manera de administrar, liderar y vivir su propósito.',
+    "Conoce las historias de líderes y empresarios que han transformado su manera de administrar, liderar y vivir su propósito.",
 };
-
-// Show each case twice to fill the 3-column grid with 2 rows
-const displayCases = [...cases, ...cases];
 
 export default function CasosExitoPage() {
   return (
@@ -62,24 +59,24 @@ export default function CasosExitoPage() {
         {/* Cases Grid */}
         <section className="section-padding bg-white">
           <div className="container-ffci">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {displayCases.map((c, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+              {cases.map((c, i) => (
                 <article
                   key={`${c.slug}-${i}`}
                   className="flex flex-col overflow-hidden"
                   style={{
-                    background: '#FFFFFF 0% 0% no-repeat padding-box',
-                    boxShadow: '0px 3px 30px #0000000F',
-                    borderRadius: '45px 45px 0px 0px',
+                    background: "#FFFFFF 0% 0% no-repeat padding-box",
+                    boxShadow: "0px 3px 30px #0000000F",
+                    borderRadius: "45px 45px 0px 0px",
                   }}
                 >
                   {/* Image */}
-                  <div className="relative w-full aspect-[4/3] shrink-0">
+                  <div className="relative w-full aspect-[4/3] shrink-0 bg-[#F5F5F5] flex items-center justify-center p-4">
                     <Image
                       src={c.image}
                       alt={c.company}
                       fill
-                      className="object-cover"
+                      className="object-contain p-4"
                     />
                   </div>
 
@@ -87,20 +84,20 @@ export default function CasosExitoPage() {
                   <div className="flex flex-col flex-1 px-8 pt-8 pb-10 gap-3">
                     <h2
                       className="font-body font-semibold text-navy leading-tight"
-                      style={{ fontSize: '45px' }}
+                      style={{ fontSize: "45px" }}
                     >
                       {c.company}
                     </h2>
                     <p
-                      className="font-body text-navy/60 leading-snug"
-                      style={{ fontSize: '25px' }}
+                      className="font-body text-[#08284F] leading-snug"
+                      style={{ fontSize: "25px" }}
                     >
                       {c.description}
                     </p>
                     <div className="flex items-center justify-between mt-auto pt-6">
                       <span
                         className="font-body font-semibold uppercase tracking-wide text-[#4A90E2] bg-[#4A90E2]/20 px-4 py-1.5 rounded-[4px]"
-                        style={{ fontSize: '15px' }}
+                        style={{ fontSize: "15px" }}
                       >
                         {c.category}
                       </span>
