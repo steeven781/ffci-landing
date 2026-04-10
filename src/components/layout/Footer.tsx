@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const exploreLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/', label: 'Inicio' },
   { href: '/servicios', label: 'Servicios' },
   { href: '/casos-exito', label: 'Casos de éxito' },
   { href: '/cursos', label: 'Cursos' },
@@ -70,7 +70,11 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     className="font-body hover:text-[#003366] transition-colors"
-                    style={{ color: '#08284F', fontSize: '22px', lineHeight: '27px' }}
+                    style={{
+                      color: '#08284F',
+                      fontSize: '22px',
+                      lineHeight: '27px',
+                    }}
                   >
                     {link.label}
                   </Link>
@@ -93,7 +97,11 @@ export default function Footer() {
                   <a
                     href={link.href}
                     className="font-body hover:text-[#003366] transition-colors"
-                    style={{ color: '#08284F', fontSize: '22px', lineHeight: '27px' }}
+                    style={{
+                      color: '#08284F',
+                      fontSize: '22px',
+                      lineHeight: '27px',
+                    }}
                   >
                     {link.label}
                   </a>
