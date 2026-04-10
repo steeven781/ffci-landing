@@ -201,7 +201,7 @@ const courses = [
     description:
       'Aplica principios de fe en tu\nvida profesional y empresarial',
     imagePath: '/assets/coworking@2x.png',
-    modalIcon: '/assets/Group 97@2x.png',
+    modalIcon: '/assets/Group 95@2x.png',
     badge: null,
     status: 'active' as const,
     longDescription:
@@ -224,7 +224,7 @@ const courses = [
     description:
       'Desarrolla tu potencial en compromisos,\nconvicciones y actitudes',
     imagePath: '/assets/lider-de-inspiracion-de-la-antorcha@2x.png',
-    modalIcon: '/assets/linea-de-meta@2x.png',
+    modalIcon: '/assets/Group 97@2x.png',
     badge: null,
     status: 'active' as const,
     longDescription:
