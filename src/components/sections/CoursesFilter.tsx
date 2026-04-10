@@ -101,7 +101,7 @@ export default function CoursesFilter({ courses }: { courses: Course[] }) {
                 </div>
 
                 {/* Title */}
-                <h2 className="font-body font-semibold text-[45px] text-[#08284F] leading-tight mb-4 min-h-[113px]">
+                <h2 className="font-body font-semibold text-[clamp(28px,3vw,45px)] text-[#08284F] leading-tight mb-4 min-h-[113px]">
                   {course.title}
                 </h2>
 
