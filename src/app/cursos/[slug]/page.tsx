@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import BuyButton from '@/components/ui/BuyButton';
 import { courses } from '../data';
 
 type Props = { params: { slug: string } };
@@ -84,12 +84,10 @@ export default function CourseDetailPage({ params }: Props) {
                   </span>
                 </div>
 
-                <Link
-                  href="/agenda"
+                <BuyButton
+                  label="Comienza el curso"
                   className="inline-flex items-center justify-center h-[58px] px-10 bg-[#4A90E2] text-white font-body font-extrabold text-[18px] tracking-widest uppercase rounded-full hover:brightness-110 transition-all duration-200"
-                >
-                  Comienza el curso
-                </Link>
+                />
               </div>
 
               {/* Right: image */}
@@ -189,12 +187,7 @@ export default function CourseDetailPage({ params }: Props) {
             <p className="font-body text-[20px] md:text-[28px] text-[#003366] leading-relaxed max-w-[730px]">
               {c.ctaText}
             </p>
-            <Link
-              href="/agenda"
-              className="inline-flex items-center justify-center h-[56px] px-12 bg-[#4A90E2] text-white font-body font-extrabold text-[20px] tracking-widest uppercase rounded-full hover:brightness-110 transition-all duration-200"
-            >
-              Comprar curso
-            </Link>
+            <BuyButton className="inline-flex items-center justify-center h-[56px] px-12 bg-[#4A90E2] text-white font-body font-extrabold text-[20px] tracking-widest uppercase rounded-full hover:brightness-110 transition-all duration-200" />
           </div>
         </section>
       </main>
