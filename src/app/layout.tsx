@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Raleway } from "next/font/google";
 import "./globals.css";
+import RecaptchaProvider from "@/components/providers/RecaptchaProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -36,7 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${playfair.variable} ${raleway.variable}`}>
-      <body className="font-body text-navy bg-white antialiased">{children}</body>
+      <body className="font-body text-navy bg-white antialiased">
+        <RecaptchaProvider>{children}</RecaptchaProvider>
+      </body>
     </html>
   );
 }
