@@ -22,7 +22,8 @@ export async function POST(req: NextRequest) {
       }),
     });
     const recaptchaData = await recaptchaRes.json();
-    console.log('reCAPTCHA result:', recaptchaData);
+    console.log('reCAPTCHA result:', JSON.stringify(recaptchaData));
+    console.log('reCAPTCHA secret key present:', !!process.env.RECAPTCHA_SECRET_KEY);
 
     const isDev = process.env.NODE_ENV !== 'production';
     if (!isDev && (!recaptchaData.success || recaptchaData.score < 0.5)) {

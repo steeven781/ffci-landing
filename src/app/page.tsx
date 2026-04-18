@@ -7,6 +7,7 @@ import Services from "@/components/sections/Services";
 import History from "@/components/sections/History";
 import Team from "@/components/sections/Team";
 import Testimonials from "@/components/sections/Testimonials";
+import Alianzas from "@/components/sections/Alianzas";
 
 export const metadata: Metadata = {
   title: "FFCI Guatemala – Consultoría Empresarial y Capacitación Profesional",
@@ -25,6 +26,7 @@ export default function HomePage() {
         <History />
         <Team />
         <Testimonials />
+        <Alianzas />
       </main>
       <Footer />
     </>

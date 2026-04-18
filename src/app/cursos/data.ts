@@ -22,7 +22,7 @@ export const courses: CourseData[] = [
       'Seminario-taller de administración financiera\na la luz de la biblia',
     imagePath: '/assets/cursos-image.png',
     icon: '/assets/Group 69@2x.png',
-    meta: '6 CLASES | 2 HRS',
+    meta: '16 CLASES | 30 MIN C/CLASE',
     status: 'active',
     longDescription:
       'El Seminario Libertad Financiera nace del llamado a vivir la verdadera libertad que Dios nos dio, aprendiendo a administrar con fidelidad los recursos que Él nos confía. Ante la falta de enseñanza sobre el Señorío y la mayordomía, este seminario ofrece principios bíblicos prácticos para ordenar las finanzas a la luz de la Palabra, integrando el Ser, el Hacer y el Tener.',

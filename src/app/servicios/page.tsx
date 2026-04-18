@@ -45,7 +45,7 @@ export default function ServiciosPage() {
 
             <div className="mt-10 pt-[21px] flex flex-wrap items-center justify-center gap-4">
               <Link
-                href="#cursos"
+                href="/cursos"
                 className="inline-flex items-center justify-center w-[222px] h-[52px] bg-[#4A90E2] text-white font-body font-extrabold text-[17px] tracking-normal uppercase rounded-full hover:brightness-110 transition-all duration-200 shadow-card"
               >
                 Adquirir un curso

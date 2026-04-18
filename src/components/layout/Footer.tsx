@@ -6,7 +6,6 @@ const exploreLinks = [
   { href: '/servicios', label: 'Servicios' },
   { href: '/casos-exito', label: 'Casos de éxito' },
   { href: '/cursos', label: 'Cursos' },
-  { href: '/libros', label: 'Libros' },
   { href: '/agenda', label: 'Agenda una cita' },
 ];
 
@@ -48,12 +47,29 @@ export default function Footer() {
               Agenda una cita
             </Link>
 
-            <p
-              className="font-body"
-              style={{ color: '#8D99AE', fontSize: '20px', lineHeight: '26px' }}
-            >
-              6ta av. 17-31 zona 11, Cdad. Guatemala
-            </p>
+            <div className="flex flex-col gap-2">
+              <p
+                className="font-body"
+                style={{ color: '#8D99AE', fontSize: '20px', lineHeight: '26px' }}
+              >
+                6ta av. 17-31 zona 11, Cdad. Guatemala
+              </p>
+              <div className="flex items-center gap-3">
+                <p
+                  className="font-body"
+                  style={{ color: '#8D99AE', fontSize: '18px', lineHeight: '26px' }}
+                >
+                  +502 5974 9230
+                </p>
+                <a
+                  href="tel:+50259749230"
+                  className="font-body font-semibold text-[13px] px-3 py-1 rounded-full border transition-colors hover:bg-[#003366] hover:text-white hover:border-[#003366]"
+                  style={{ color: '#8D99AE', borderColor: '#CBD5E0' }}
+                >
+                  Llamar
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Middle — Explora */}
