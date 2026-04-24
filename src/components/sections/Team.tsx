@@ -20,7 +20,12 @@ const teamMembers = [
   },
   { image: 'engineer', role: 'Facilitador e Ingeniero', name: 'Victor López' },
   { image: 'lawyer', role: 'Abogado y Asesor Legal', name: 'Alberto Orozco' },
-  { image: 'new-person', ext: 'jpeg', role: 'Sin Puesto', name: 'Sin Nombre' },
+  {
+    image: 'new-person',
+    ext: 'jpeg',
+    role: 'Facilitador',
+    name: 'Jorge Estrada',
+  },
 ];
 
 function MemberCard({ member }: { member: (typeof teamMembers)[0] }) {
@@ -115,7 +120,11 @@ export default function Team() {
           className="flex flex-wrap justify-center gap-10 mt-10"
         >
           {lastMembers.map((member) => (
-            <motion.div key={member.image} variants={fadeUp} className="w-full max-w-[533px]">
+            <motion.div
+              key={member.image}
+              variants={fadeUp}
+              className="w-full max-w-[533px]"
+            >
               <MemberCard member={member} />
             </motion.div>
           ))}
