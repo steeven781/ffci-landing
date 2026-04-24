@@ -1,6 +1,7 @@
 import {
   Body,
   Button,
+  Column,
   Container,
   Head,
   Heading,
@@ -8,10 +9,13 @@ import {
   Html,
   Img,
   Preview,
+  Row,
   Section,
   Text,
 } from '@react-email/components';
 import * as React from 'react';
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://ffci-guatemala.org';
 
 interface ConfirmacionCitaProps {
   nombre: string;
@@ -19,6 +23,7 @@ interface ConfirmacionCitaProps {
   fecha: string;   // "2026-04-15"
   hora: string;    // "10:00"
   meetUrl: string;
+  logoSrc?: string;
 }
 
 const NAVY = '#003366';
@@ -30,7 +35,9 @@ export default function ConfirmacionCita({
   fecha,
   hora,
   meetUrl,
+  logoSrc,
 }: ConfirmacionCitaProps) {
+  const logo = logoSrc ?? `${BASE_URL}/assets/logo-ffci.png`;
   const fechaFormateada = new Date(`${fecha}T12:00:00`).toLocaleDateString('es-GT', {
     weekday: 'long',
     year: 'numeric',
@@ -47,13 +54,26 @@ export default function ConfirmacionCita({
         <Container style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#ffffff', borderRadius: '12px', overflow: 'hidden', marginTop: '32px', marginBottom: '32px' }}>
 
           {/* Header */}
-          <Section style={{ backgroundColor: NAVY, padding: '32px 40px' }}>
-            <Heading style={{ color: '#ffffff', fontSize: '24px', margin: 0, fontWeight: 700 }}>
-              FFCI Guatemala
-            </Heading>
-            <Text style={{ color: '#ffffff', opacity: 0.8, margin: '8px 0 0', fontSize: '14px' }}>
-              Finanzas · Liderazgo · Propósito
-            </Text>
+          <Section style={{ backgroundColor: NAVY, padding: '28px 40px' }}>
+            <Row>
+              <Column>
+                <Heading style={{ color: '#ffffff', fontSize: '24px', margin: 0, fontWeight: 700 }}>
+                  FFCI Guatemala
+                </Heading>
+                <Text style={{ color: '#ffffff', opacity: 0.8, margin: '8px 0 0', fontSize: '14px' }}>
+                  Finanzas · Liderazgo · Propósito
+                </Text>
+              </Column>
+              <Column style={{ textAlign: 'right', verticalAlign: 'middle' }}>
+                <Img
+                  src={logo}
+                  alt="FFCI Guatemala"
+                  width={200}
+                  height={36}
+                  style={{ borderRadius: '6px', background: '#ffffff', padding: '6px 10px' }}
+                />
+              </Column>
+            </Row>
           </Section>
 
           {/* Body */}

@@ -86,6 +86,7 @@ export default function CourseDetailPage({ params }: Props) {
 
                 <BuyButton
                   label="Comienza el curso"
+                  courseName={c.title}
                   className="inline-flex items-center justify-center h-[58px] px-10 bg-[#4A90E2] text-white font-body font-extrabold text-[18px] tracking-widest uppercase rounded-full hover:brightness-110 transition-all duration-200"
                 />
               </div>
@@ -187,7 +188,7 @@ export default function CourseDetailPage({ params }: Props) {
             <p className="font-body text-[20px] md:text-[28px] text-[#003366] leading-relaxed max-w-[730px]">
               {c.ctaText}
             </p>
-            <BuyButton className="inline-flex items-center justify-center h-[56px] px-12 bg-[#4A90E2] text-white font-body font-extrabold text-[20px] tracking-widest uppercase rounded-full hover:brightness-110 transition-all duration-200" />
+            <BuyButton courseName={c.title} className="inline-flex items-center justify-center h-[56px] px-12 bg-[#4A90E2] text-white font-body font-extrabold text-[20px] tracking-widest uppercase rounded-full hover:brightness-110 transition-all duration-200" />
           </div>
         </section>
       </main>

@@ -1,14 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-const timeSlots: string[] = [];
-for (let h = 9; h < 17; h++) {
-  timeSlots.push(`${String(h).padStart(2, '0')}:00`);
-  timeSlots.push(`${String(h).padStart(2, '0')}:30`);
+const timeSlots = [
+  '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30',
+  '14:30', '15:00', '15:30',
+];
+
+function isWeekend(dateStr: string): boolean {
+  const day = new Date(`${dateStr}T12:00:00`).getDay();
+  return day === 0 || day === 6;
 }
 
 export default function AgendaPage() {
@@ -18,7 +22,24 @@ export default function AgendaPage() {
   const [fecha, setFecha] = useState('');
   const [ocupados, setOcupados] = useState<string[]>([]);
   const [loadingFecha, setLoadingFecha] = useState(false);
+  const [fechaEsFinde, setFechaEsFinde] = useState(false);
+  const [formKey, setFormKey] = useState(0);
   const { executeRecaptcha } = useGoogleReCaptcha();
+
+  function resetForm() {
+    setSuccess(false);
+    setFecha('');
+    setOcupados([]);
+    setFechaEsFinde(false);
+    setError(null);
+    setFormKey((k) => k + 1);
+  }
+
+  useEffect(() => {
+    if (!success) return;
+    const timer = setTimeout(resetForm, 20_000);
+    return () => clearTimeout(timer);
+  }, [success]);
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -26,7 +47,9 @@ export default function AgendaPage() {
     const val = e.target.value;
     setFecha(val);
     setOcupados([]);
-    if (!val) return;
+    if (!val) { setFechaEsFinde(false); return; }
+    if (isWeekend(val)) { setFechaEsFinde(true); return; }
+    setFechaEsFinde(false);
     setLoadingFecha(true);
     try {
       const res = await fetch(`/api/agenda/disponibilidad?fecha=${val}`);
@@ -134,7 +157,7 @@ export default function AgendaPage() {
                     </p>
                   </div>
                 ) : (
-                  <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+                  <form key={formKey} className="flex flex-col gap-5" onSubmit={handleSubmit}>
                     <input
                       type="email"
                       name="email"
@@ -175,11 +198,13 @@ export default function AgendaPage() {
                         name="hora"
                         required
                         defaultValue=""
-                        disabled={!fecha || loadingFecha || (!!fecha && !loadingFecha && ocupados.length === timeSlots.length)}
+                        disabled={!fecha || fechaEsFinde || loadingFecha || (!!fecha && !loadingFecha && ocupados.length === timeSlots.length)}
                         className="h-14 px-5 rounded-2xl bg-[#F2F4F7] font-body text-body-md text-navy focus:outline-none focus:ring-2 focus:ring-sky/30 transition-all border-none disabled:opacity-50"
                       >
                         <option value="" disabled>
-                          {loadingFecha
+                          {fechaEsFinde
+                            ? 'Solo días hábiles'
+                            : loadingFecha
                             ? 'Cargando Disponibilidad...'
                             : fecha && !loadingFecha && ocupados.length === timeSlots.length
                             ? 'No hay horarios disponibles'
@@ -195,7 +220,12 @@ export default function AgendaPage() {
                       </select>
                     </div>
 
-                    {fecha && !loadingFecha && ocupados.length === timeSlots.length && (
+                    {fechaEsFinde && (
+                      <p className="font-body text-[13px] text-amber-600 -mt-2">
+                        Las citas son de lunes a viernes. Por favor selecciona un día hábil.
+                      </p>
+                    )}
+                    {!fechaEsFinde && fecha && !loadingFecha && ocupados.length === timeSlots.length && (
                       <p className="font-body text-[13px] text-amber-600 -mt-2">
                         No hay horarios disponibles para este día. Por favor selecciona otra fecha.
                       </p>

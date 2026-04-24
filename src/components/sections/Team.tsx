@@ -20,6 +20,7 @@ const teamMembers = [
   },
   { image: 'engineer', role: 'Facilitador e Ingeniero', name: 'Victor López' },
   { image: 'lawyer', role: 'Abogado y Asesor Legal', name: 'Alberto Orozco' },
+  { image: 'new-person', ext: 'jpeg', role: 'Sin Puesto', name: 'Sin Nombre' },
 ];
 
 function MemberCard({ member }: { member: (typeof teamMembers)[0] }) {
@@ -30,7 +31,7 @@ function MemberCard({ member }: { member: (typeof teamMembers)[0] }) {
         style={{ borderRadius: '45px', aspectRatio: '533 / 458' }}
       >
         <Image
-          src={`/assets/${member.image}.png`}
+          src={`/assets/${member.image}.${member.ext ?? 'png'}`}
           alt={member.name}
           fill
           className="object-cover object-top pt-[18px]"
@@ -49,7 +50,7 @@ function MemberCard({ member }: { member: (typeof teamMembers)[0] }) {
 
 export default function Team() {
   const mainMembers = teamMembers.slice(0, 6);
-  const lastMember = teamMembers[6];
+  const lastMembers = teamMembers.slice(6);
 
   return (
     <section className="bg-white py-[120px]" aria-label="Nuestro equipo">
@@ -105,17 +106,19 @@ export default function Team() {
           ))}
         </motion.div>
 
-        {/* Last member — centered */}
+        {/* Remaining members — centered row */}
         <motion.div
-          variants={fadeUp}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
-          className="flex justify-center mt-10"
+          className="flex flex-wrap justify-center gap-10 mt-10"
         >
-          <div className="w-full max-w-[533px]">
-            <MemberCard member={lastMember} />
-          </div>
+          {lastMembers.map((member) => (
+            <motion.div key={member.image} variants={fadeUp} className="w-full max-w-[533px]">
+              <MemberCard member={member} />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

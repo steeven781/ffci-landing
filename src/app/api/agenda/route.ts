@@ -1,8 +1,15 @@
+import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import { render } from '@react-email/render';
 import ConfirmacionCita from '@/emails/ConfirmacionCita';
+
+const LOGO_ATTACHMENT = {
+  filename: 'logo-ffci.png',
+  path: path.join(process.cwd(), 'public/assets/logo-ffci.png'),
+  cid: 'logo-ffci',
+};
 
 
 export async function POST(req: NextRequest) {
@@ -86,7 +93,7 @@ export async function POST(req: NextRequest) {
       });
 
       const html = await render(
-        ConfirmacionCita({ nombre, apellido, fecha, hora, meetUrl })
+        ConfirmacionCita({ nombre, apellido, fecha, hora, meetUrl, logoSrc: 'cid:logo-ffci' })
       );
 
       await transporter.sendMail({
@@ -94,6 +101,7 @@ export async function POST(req: NextRequest) {
         to: email,
         subject: `Tu cita con FFCI Guatemala — ${fecha.split('-').reverse().join('/')} a las ${hora}`,
         html,
+        attachments: [LOGO_ATTACHMENT],
       });
 
       console.log('Email enviado a:', email);

@@ -7,9 +7,10 @@ import { useRouter } from 'next/navigation';
 interface Props {
   open: boolean;
   onClose: () => void;
+  courseName?: string;
 }
 
-export default function PurchaseModal({ open, onClose }: Props) {
+export default function PurchaseModal({ open, onClose, courseName = '' }: Props) {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [nombre, setNombre] = useState('');
@@ -39,6 +40,7 @@ export default function PurchaseModal({ open, onClose }: Props) {
     sessionStorage.setItem('pago_email', email);
     sessionStorage.setItem('pago_nombre', nombre);
     sessionStorage.setItem('pago_whatsapp', whatsapp);
+    sessionStorage.setItem('pago_curso', courseName);
     router.push('/pago');
   }
 
