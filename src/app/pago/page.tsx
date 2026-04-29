@@ -52,7 +52,7 @@ export default function PagoPage() {
       const res = await fetch('/api/pago', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, nombre, curso }),
+        body: JSON.stringify({ email, nombre, whatsapp, curso }),
       });
       const data = await res.json();
       if (!res.ok) {

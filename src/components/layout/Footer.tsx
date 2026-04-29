@@ -10,9 +10,9 @@ const exploreLinks = [
 ];
 
 const socialLinks = [
-  { href: '#', label: 'Facebook' },
-  { href: '#', label: 'Instagram' },
-  { href: '#', label: 'Spotify' },
+  { href: 'https://www.facebook.com/ffciguatemala', label: 'Facebook', target: '_blank' },
+  { href: '#', label: 'Instagram', target: undefined },
+  { href: '#', label: 'Spotify', target: undefined },
 ];
 
 export default function Footer() {
@@ -112,6 +112,8 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    target={link.target}
+                    rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
                     className="font-body hover:text-[#003366] transition-colors"
                     style={{
                       color: '#08284F',

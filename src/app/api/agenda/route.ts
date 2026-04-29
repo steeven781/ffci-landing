@@ -4,6 +4,9 @@ import { google } from 'googleapis';
 import nodemailer from 'nodemailer';
 import { render } from '@react-email/render';
 import ConfirmacionCita from '@/emails/ConfirmacionCita';
+import NotificacionCita from '@/emails/NotificacionCita';
+
+const NOTIFICACION_EMAIL = 'danydeleon911@gmail.com';
 
 const LOGO_ATTACHMENT = {
   filename: 'logo-ffci.png',
@@ -105,6 +108,21 @@ export async function POST(req: NextRequest) {
       });
 
       console.log('Email enviado a:', email);
+
+      // Notification email to Danilo
+      const htmlNotificacion = await render(
+        NotificacionCita({ nombre, apellido, email, logoSrc: 'cid:logo-ffci' })
+      );
+
+      await transporter.sendMail({
+        from: `"FFCI Guatemala" <${process.env.FFCI_EMAIL}>`,
+        to: NOTIFICACION_EMAIL,
+        subject: 'Notificación de videollamada agendada',
+        html: htmlNotificacion,
+        attachments: [LOGO_ATTACHMENT],
+      });
+
+      console.log('Email de notificación enviado a:', NOTIFICACION_EMAIL);
     } catch (emailErr) {
       console.error('Error enviando email:', emailErr);
       // No bloqueamos la respuesta si el email falla
